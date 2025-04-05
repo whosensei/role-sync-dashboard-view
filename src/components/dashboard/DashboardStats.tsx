@@ -2,7 +2,15 @@
 import React from "react";
 import { useLoan, formatCurrency } from "@/context/loan-context";
 import StatCard from "./StatCard";
-import { AreaChart, BarChart } from "recharts";
+import { 
+  AreaChart, 
+  Area, 
+  BarChart, 
+  Bar, 
+  XAxis, 
+  YAxis, 
+  Tooltip as RechartsTooltip 
+} from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Banknote, Users, RefreshCw, PiggyBank, TrendingUp } from "lucide-react";
 
@@ -84,10 +92,10 @@ const DashboardStats: React.FC = () => {
                   <stop offset="95%" stopColor="#8BC34A" stopOpacity={0.1} />
                 </linearGradient>
               </defs>
-              <AreaChart.XAxis dataKey="month" />
-              <AreaChart.YAxis />
-              <AreaChart.Tooltip />
-              <AreaChart.Area
+              <XAxis dataKey="month" />
+              <YAxis />
+              <RechartsTooltip />
+              <Area
                 type="monotone"
                 dataKey="value"
                 stroke="#8BC34A"
@@ -111,10 +119,10 @@ const DashboardStats: React.FC = () => {
               height={300}
               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
             >
-              <BarChart.XAxis dataKey="month" />
-              <BarChart.YAxis />
-              <BarChart.Tooltip />
-              <BarChart.Bar dataKey="value" fill="#2196F3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <RechartsTooltip />
+              <Bar dataKey="value" fill="#2196F3" />
             </BarChart>
           </div>
         </CardContent>
@@ -132,10 +140,10 @@ const DashboardStats: React.FC = () => {
               height={300}
               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
             >
-              <BarChart.XAxis dataKey="month" />
-              <BarChart.YAxis />
-              <BarChart.Tooltip />
-              <BarChart.Bar dataKey="value" fill="#EA384C" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <RechartsTooltip />
+              <Bar dataKey="value" fill="#EA384C" />
             </BarChart>
           </div>
         </CardContent>

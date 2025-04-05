@@ -62,7 +62,13 @@ const UserManagement: React.FC = () => {
   const onSubmit = async (values: UserFormValues) => {
     setIsSubmitting(true);
     try {
-      await addUser(values);
+      // Ensure values match the required Omit<User, "id"> type
+      const userData = {
+        name: values.name,
+        email: values.email,
+        role: values.role,
+      };
+      await addUser(userData);
       setIsOpen(false);
       form.reset();
     } catch (error) {

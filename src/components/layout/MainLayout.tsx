@@ -5,7 +5,12 @@ import { useAuth } from "@/context/auth-context";
 import { Bell, MessageCircle, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "./Navigation";
-import { Tooltip } from "@/components/ui/tooltip";
+import { 
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger 
+} from "@/components/ui/tooltip";
 import { UserRole } from "@/types";
 
 interface MainLayoutProps {
@@ -35,17 +40,33 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             <h1 className="text-xl font-bold text-credit-green-800">CREDIT APP</h1>
           </div>
           <div className="flex items-center space-x-4">
-            <Tooltip content="Notifications">
-              <Button variant="ghost" size="icon" className="relative">
-                <Bell className="w-5 h-5" />
-                <span className="absolute top-0 right-0 w-2 h-2 bg-credit-red rounded-full"></span>
-              </Button>
-            </Tooltip>
-            <Tooltip content="Messages">
-              <Button variant="ghost" size="icon">
-                <MessageCircle className="w-5 h-5" />
-              </Button>
-            </Tooltip>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button variant="ghost" size="icon" className="relative">
+                    <Bell className="w-5 h-5" />
+                    <span className="absolute top-0 right-0 w-2 h-2 bg-credit-red rounded-full"></span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  Notifications
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                    <MessageCircle className="w-5 h-5" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  Messages
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            
             <div className="relative group">
               <div className="flex items-center gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-100">
                 {user.image ? (

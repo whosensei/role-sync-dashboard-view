@@ -58,7 +58,13 @@ const LoanApplicationForm: React.FC = () => {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
-      await applyForLoan(data);
+      // Make sure all required properties are provided
+      const loanData = {
+        amount: data.amount,
+        purpose: data.purpose,
+        description: data.description,
+      };
+      await applyForLoan(loanData);
       form.reset();
     } catch (error) {
       console.error("Error submitting loan application:", error);
