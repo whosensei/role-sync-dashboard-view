@@ -15,6 +15,9 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ApplyLoan from "./pages/ApplyLoan";
 import AccessConfiguration from "./pages/AccessConfiguration";
+import Borrowers from "./pages/Borrowers";
+import Loans from "./pages/Loans";
+import Repayments from "./pages/Repayments";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +46,30 @@ const App = () => (
                 element={
                   <ProtectedRoute>
                     <ApplyLoan />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/borrowers" 
+                element={
+                  <ProtectedRoute>
+                    <Borrowers />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/loans" 
+                element={
+                  <ProtectedRoute>
+                    <Loans />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/repayments" 
+                element={
+                  <ProtectedRoute>
+                    <Repayments />
                   </ProtectedRoute>
                 } 
               />
